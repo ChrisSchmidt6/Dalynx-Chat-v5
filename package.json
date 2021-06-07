@@ -1,0 +1,11 @@
+{
+	"name":"DalynxChat",
+	"version":"3.0.1",
+	"private":"true",
+	"dependencies":{
+		"socket.io":"*",
+		"express":"*",
+   		"mongoose": "*",
+   		"timeago": "*"
+	}
+}

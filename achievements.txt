@@ -1,0 +1,33 @@
+Bomber Man: Use 15 bombs. (Icon: bomb)
+
+Bomb Proof: Protect yourself with the shield from 10 bombs. (Icon: shield)
+
+High Roller: Make a profit of ? JP from crates. (Icon: sack with dollar sign)
+
+Collector: Earn 10 achievements. (Icon: Dalynx 'X' with gold 10 over it)
+
+What is Nature?: Spend a total of 200 hours in chats. (Icon: tree with red slash circle)
+
+Perfect Attendence: Log on to a chat at least once a day for 10 consecutive days. (Icon: book)
+
+Clocked In: Be logged into a chat for 5 consectutive hours. (Icon: clock)
+
+High Class: Have a total of ? JP. (Icon: top hat, monocle, and mustache)
+
+Gold Digger: Earn ? JP in 24 hours or less. (Icon: pick axe)
+
+Shop 'til You Drop: Spend a total of ? JP. (Icon: shopping bag)
+
+Gambler: Enter the lottery 100 times. (Icon: playing card(s))
+
+Lady Luck: Win the lottery 10 times. (Icon: four leaf clover)
+
+Treasure Hunter: Open 50 crates. (Icon: treasure chest)
+
+?: Reach level 5. (Icon: bronze star with 5 in it)
+
+?: Reach level 10. (Icon: silver star with 10 in it)
+
+?: Reach level 15. (Icon: gold star with 15 in it)
+
+?: Reach level 20. (Icon: platinum star with 20 in it)

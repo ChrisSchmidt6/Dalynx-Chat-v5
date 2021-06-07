@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta charset="utf-8" />
+		<title>Dalynx Chat</title>
+		<link rel="shortcut icon" type="image/png" href="images/icons/X_Logo.ico"/>
+		<link rel="stylesheet" type="text/css" href="/jquery/jquery.Jcrop.min.css"/>
+		<link rel="stylesheet" type="text/css" href="/spectrum/spectrum.css"/>
+		<link rel="stylesheet" type="text/css" href="style.css"/>
+	</head>
+	<body>
+		<div id="wrapper">
+			<div id="dimScreen"></div>
+			<table id="load">
+				<tr style="height:100%">
+					<td>
+						<center><img width="150px" height="150px" src="images/icons/load.gif" /></center>
+					</td>
+				</tr>
+			</table>
+			<div id="homeScreen">
+				<div id="informWrap">
+					<div id="inform">
+							<h1 style="margin-top:0px;margin-bottom:0px;background:#CA3C60;border:1px solid maroon;padding:2px;">Welcome to Dalynx Chat</h1>
+							<h2 style="margin-top:0px;margin-bottom:4px;">You are in the room <span id="room_name" style="color:gold;">undefined</span>.</h2>
+							<p id="fullChat" style="color:maroon;margin:0px 16px;cursor:pointer;">Full Chat (mobile users)</p>
+							<p style="color:white;margin:0px 32px">(To access the chatroom, you must sign in. If you have not registered yet you must do so first)</p>
+					</div>
+					<div id="sign_in_form">
+						<h2 style="margin-top:0px;padding:2px;margin-bottom:0px;background:#CA3C60;border:1px solid maroon;">Sign in</h2>
+						<p style="margin:4px;color:white;">Don't have an account? <span id="register_user"><u>Register</u></span></p>
+						<form id="sign_in" autocomplete="on">
+							<span id="sign_in_err" style="color:red;background:maroon;display:none;width:100%;"></span>
+							<p style="margin:0px;"><b>Username :</b></p>
+							<input class="textinp" type="username" style="width:160px;padding:2px;margin-bottom:4px;border:1px solid maroon;" maxlength="12" required>
+							<p style="margin:0px;"><b>Password :</b></p>
+							<input class="textinp" type="password" style="width:160px;padding:2px;margin-bottom:8px;border:1px solid maroon;" maxlength="18" required>
+							<br />
+							<input class ="checkinp" type="checkbox" style="margin-bottom:8px;border:1px solid maroon;"> Keep me signed in
+							<br />
+							<input class="subinp" type="submit" value="Sign in" style="border:1px solid maroon;padding:2px 16px;font-size:14pt;color:maroon;">
+							<br />
+						</form>
+					</div>
+				</div>
+				<div id="register_form" class="center chat_module-dim">
+					<h2 style="cursor:move;margin-top:0px;padding:2px;margin-bottom:0px;background:#CA3C60;border:1px solid maroon;">Register</h2>
+					<form id="register" autocomplete="on">
+						<span id="register_err" style="color:red;background:maroon;display:none;width:100%;"></span>
+						<p style="margin:0px;"><b>Username :</b></p>
+						<input class="textinp" type="username" style="width:160px;padding:2px;margin-bottom:4px;border:1px solid maroon;" maxlength="12" required>
+						<p style="margin:0px;"><b>Password :</b></p>
+						<input class="textinp" id="input_pass-rg" type="password" style="width:160px;padding:2px;margin-bottom:4px;border:1px solid maroon;" maxlength="18" required>
+						<p style="margin:0px;"><b>Confirm Password :</b></p>
+						<input class="textinp" id="confirm_pass-rg" type="password" style="width:160px;padding:2px;margin-bottom:8px;border:1px solid maroon;" maxlength="18" required>
+						<p style="margin:0px;"><b>Remove all "!" characters :</b></p>
+						<input class="textinp" value="!Are you! hu!man!?" id="confirm_human" type="text" style="width:160px;padding:2px;margin-bottom:8px;border:1px solid maroon;" maxlength="25" required>
+						<input id="confirm_human2" type="text">
+						<br />
+						<input class ="subinp" id="fockinregister" type="submit" value="Register" style="border:1px solid maroon;padding:2px 16px;font-size:14pt;color:maroon;">
+						<br />
+					</form>
+				</div>
+			</div>
+			<div id="chatScreen">
+				<div id="toolbar">
+					<img id="dalynxButton" src="images/icons/X_Logo.png" />
+					<span id="toolbar_roomName"><b>undefined</b></span>
+					<ul id="buttons">
+						<li>
+							<img id="soundButton-on" width="26px" height="24px" class="toolButton soundButton" src="images/icons/soundButton-on.png" />
+							<ul id="soundButton-on_drop" class="toolButton_drop">
+								<li class="option soundOn_li">All On</li>
+								<li class="option soundPings_li">Pinging</li>
+								<li class="option soundPms_li">Private Messages</li>
+								<li class="option soundOff_li">All Off</li>
+							</ul>
+						</li>
+						<li>
+							<img id="messageButton" width="24px" height="24px" class="toolButton" src="images/icons/messageButton.png" />
+							<ul id="messageButton_drop" class="toolButton_drop">
+								<li class="notif empty"><i>You have no messages</i></li>
+							</ul>
+						</li>
+						<li>
+							<img id="notificationButton" width="10px" height="24px" class="toolButton" src="images/icons/notificationButton.png" />
+							<ul id="notificationButton_drop" class="toolButton_drop">
+								<li class="notif empty"><i>You have no notifications</i></li>
+							</ul>
+						</li>
+						<li>
+							<img id="jpButton" width="24px" height="24px" class="toolButton" src="images/icons/jpButton.png" />
+							<ul id="jpButton_drop" class="toolButton_drop">
+								<li class="option store_li">Store</li>
+								<li title="Coming Soon!" class="option trade_li" style="cursor:default;">Trade</li>
+								<li class="option gamble_li">Gamble</li>
+								<li class="option redeem_li">Redeem</li>
+								<li class="option highscores_li">Highscores</li>
+							</ul>
+						</li>
+						<li>
+							<img id="accountButton" width="24px" height="24px" class="toolButton" src="images/icons/accountButton.png" />
+							<ul id="accountButton_drop" class="toolButton_drop">
+								<li class="option avatar_li">Avatar</li>
+								<li class="option nameColor_li">Name Color</li>
+								<li class="option textColor_li">Text Color</li>
+								<li class="option background_li">Background</li>
+								<li class="option inventory_li">Inventory</li>
+								<li class="option friendslist_li">Friends List</li>
+								<li class="option statistics_li">Statistics</li>
+								<li class="option signOut_li">Sign Out</li>
+							</ul>
+						</li>
+						<li>
+							<img id="optionsButton" width="24px" height="24px" class="toolButton" src="images/icons/optionsButton.png" />
+							<ul id="optionsButton_drop" class="toolButton_drop">
+								<li class="option peopleHere_li">People Here</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+				<div id="chatWrap">
+					<div id="chat"></div>
+					<div id="chat_interface">
+						<textarea id="message_form" autocomplete="off" maxlength="2000"></textarea>
+					</div>
+				</div>
+				<!--<div id="notification_popup">
+					<div id="notifp_x" title="Close popup" style="cursor:pointer;color:white;position:absolute;top:4px;right:9px;">X</div>
+					<span id="notifp_title" style="margin-top:7px;display:block;width:100%;text-align:center;font-size:28pt;color:white;"><b>Get ready for JoltyPoints!</b></span>
+					<span id="notifp_message" style="margin:20px 15px 15px 15px;display:block;width:calc(100% - 30px);color:#CA3C60;font-size:15pt;">
+						Soon after Chris adds ways to obtain JoltyPoints, achievements will also be added. If you have any ideas for achievements, run them by Chris or Archer.<br /><br />If you want to help make the emblems for achievements, make some random ones that are 20x20 and show Chris. He will decide if he likes what you can do, and will give you credit for any emblem that you make if it is in use by the chat.<br /><br />If you want to contribute to or feel you can help out the chat in any way, don't be shy.<br /><br />Updates might be slow because of life, but they will still come. Thanks for reading this announcement.
+					</span>
+				</div>-->
+				<div id="jp_store" class="center chat_module">
+					<h2 style="cursor:move;margin-top:0px;padding:2px;margin-bottom:8px;background:#CA3C60;border:1px solid maroon;">Store<img class="exit_dialog" src="images/icons/exit_dialog.png" /></h2>
+					<form id="store_form">
+						<span style="color:gold;font-weight:bold;">Sun and Moon emblems added!</span>
+						<br />
+						<span style="color:green;font-weight:bold;">DEALS<br />No current deals</span>
+						<br />
+						<br />
+						<span style="color:white;font-weight:bold;">~ EMBLEMS ~</span>
+						<br />
+						<br />
+						<img id="b-e1" class='buy' src='images/emblems/custom/c_aether.png' title='Aether' alt='Aether' />
+						<img id="b-e2" class='buy' src='images/emblems/custom/c_astra.png' title='Astra' alt='Atra' />
+						<img id="b-e3" class='buy' src='images/emblems/custom/c_dragonskin.png' title='Dragonskin' alt='Dragonskin' />
+						<img id="b-e4" class='buy' src='images/emblems/custom/c_fell-dragon.png' title='Fell Dragon' alt='Fell Dragon' />
+						<img id="b-e5" class='buy' src='images/emblems/custom/c_gale-force.png' title='Gale Force' alt='Gale Force' />
+						<img id="b-e6" class='buy' src='images/emblems/custom/c_grisly-wound.png' title='Grisly Wound' alt='Grisly Wound' />
+						<img id="b-e7" class='buy' src='images/emblems/custom/c_icy-blood.png' title='Icy Blood' alt='Icy Blood' />
+						<img id="b-e8" class='buy' src='images/emblems/custom/c_lucky-7.png' title='Lucky 7' alt='Lucky 7' />
+						<img id="b-e9" class='buy' src='images/emblems/custom/c_luna.png' title='Luna' alt='Luna' />
+						<img id="b-e10" class='buy' src='images/emblems/custom/c_nohrian-trust.png' title='Nohrian Trust' alt='Nohrian Trust' />
+						<img id="b-e11" class='buy' src='images/emblems/custom/c_rightful-god.png' title='Righftul God' alt='Rightful God' />
+						<img id="b-e12" class='buy' src='images/emblems/custom/c_boulder-badge.png' title='Boulder Badge' alt='Boulder Badge' />
+						<img id="b-e13" class='buy' src='images/emblems/custom/c_cascade-badge.png' title='Cascade Badge' alt='Cascade Badge' />
+						<img id="b-e14" class='buy' src='images/emblems/custom/c_thunder-badge.png' title='Thunder Badge' alt='Thunder Badge' />
+						<img id="b-e15" class='buy' src='images/emblems/custom/c_rainbow-badge.png' title='Rainbow Badge' alt='Rainbow Badge' />
+						<img id="b-e16" class='buy' src='images/emblems/custom/c_soul-badge.png' title='Soul Badge' alt='Soul Badge' />
+						<img id="b-e17" class='buy' src='images/emblems/custom/c_marsh-badge.png' title='Marsh Badge' alt='Marsh Badge' />
+						<img id="b-e18" class='buy' src='images/emblems/custom/c_volcano-badge.png' title='Volcano Badge' alt='Volcano Badge' />
+						<img id="b-e19" class='buy' src='images/emblems/custom/c_earth-badge.png' title='Earth Badge' alt='Earth Badge' />
+						<img id="b-e20" class='buy' src='images/emblems/custom/c_bowser.png' title='Bowser' alt='Bowser' />
+						<img id="b-e21" class='buy' src='images/emblems/custom/c_charizard.png' title='Charizard' alt='Charizard' />
+						<img id="b-e22" class='buy' src='images/emblems/custom/c_greninja.png' title='Greninja' alt='Greninja' />
+						<img id="b-e23" class='buy' src='images/emblems/custom/c_mario.png' title='Mario' alt='Mario' />
+						<img id="b-e24" class='buy' src='images/emblems/custom/c_ness.png' title='Ness' alt='Ness' />
+						<img id="b-e25" class='buy' src='images/emblems/custom/c_robin.png' title='Robin' alt='Robin' />
+						<img id="b-e26" class='buy' src='images/emblems/custom/c_pokemon-sun.png' title='Pokemon Sun' alt='Pokemon Sun' />
+						<img id="b-e27" class='buy' src='images/emblems/custom/c_pokemon-moon.png' title='Pokemon Moon' alt='Pokemon Moon' />
+						<img id="b-e28" class='buy' src='images/emblems/custom/c_overwatch-logo.png' title='Overwatch Logo' alt='Overwatch Logo' />
+						<img id="b-e29" class='buy' src='images/emblems/custom/c_runescape.png' title='Runescape' alt='Runescape' />
+						<img id="b-e30" class='buy' src='images/emblems/custom/c_team-instinct.png' title='Team Instinct' alt='Team Instinct' />
+						<img id="b-e31" class='buy' src='images/emblems/custom/c_team-mystic.png' title='Team Mystic' alt='Team Mystic' />
+						<img id="b-e32" class='buy' src='images/emblems/custom/c_team-valor.png' title='Team Valor' alt='Team Valor' />
+						<!--<br />
+						<br />
+						<span style="color:white;font-weight:bold;">~ SPECIALS ~</span>
+						<br />
+						<br />
+						<img id="b-xspec1" class='buy' src='images/emblems/custom/c_smash-4.png' title='Smash 4' alt='Smash 4' />-->
+						<span id="store_err" style="color:red;background:maroon;display:none;width:100%;"></span>
+					</form>
+				</div>
+				<div id="jp_gamble" class="center chat_module">
+					<h2 style="cursor:move;margin-top:0px;padding:2px;margin-bottom:8px;background:#CA3C60;border:1px solid maroon;">Gamble<img class="exit_dialog" src="images/icons/exit_dialog.png" /></h2>
+					<form id="gamble_form">
+						<span style="color:gold;">Good Luck!</span>
+						<br />
+						<span style="color:white;font-weight:bold;">Amount: </span><input id="gamble_amount" style="width:50px;padding:2px;margin-bottom:4px;border:1px solid maroon;" type="number" min="1" value="50">
+						<br />
+						<span style="color:white;font-weight:bold;">With: </span><input id="gamble_user" style="width:75px;padding:2px;margin-bottom:4px;border:1px solid maroon;" type="text" value="server">
+						<br />
+						<span style="color:gold;font-weight:bold;">Probability: <span id="gamble_probability">45%</span></span>
+						<br />
+						<span id="gamble_err" style="color:red;background:maroon;display:none;width:100%;"></span>
+						<input class="subinp" style="margin-top:8px;border:1px solid maroon;padding:2px 16px;font-size:14pt;color:maroon;" type="submit" value="Gamble!">
+					</form>
+				</div>
+				<div id="redeem_key" class="center chat_module">
+					<h2 style="cursor:move;margin-top:0px;padding:2px;margin-bottom:8px;background:#CA3C60;border:1px solid maroon;">Redeem Key<img class="exit_dialog" src="images/icons/exit_dialog.png" /></h2>
+					<form id="redeem_form">
+						<span style="color:white;font-weight:bold;">Key:</span>
+						<br />
+						<input id="redeem_input" style="width:180px;padding:2px;margin-bottom:4px;border:1px solid maroon;" type="text">
+						<br />
+						<span id="redeem_err" style="color:red;background:maroon;display:none;width:100%;"></span>
+						<input class="subinp" style="margin-top:8px;border:1px solid maroon;padding:2px 16px;font-size:14pt;color:maroon;" type="submit" value="Redeem">
+					</form>
+				</div>
+				<div id="jp_highscores" class="center chat_module">
+					<h2 style="cursor:move;margin-top:0px;padding:2px;margin-bottom:8px;background:#CA3C60;border:1px solid maroon;">Highscores<img class="exit_dialog" src="images/icons/exit_dialog.png" /></h2>
+					<div id="jp_highscores_container">
+						<span style="color:#fff;border-bottom:1px solid gold;"><b>Top 5</b></span>
+						<br />
+						<span style="color:#fff;" id="jp_highscores_list"></span>
+					</div>
+				</div>
+				<div id="change_avatar" class="center chat_module">
+					<h2 style="cursor:move;margin-top:0px;padding:2px;margin-bottom:8px;background:#CA3C60;border:1px solid maroon;">Avatar<img class="exit_dialog" src="images/icons/exit_dialog.png" /></h2>
+					<form id="upload_and_crop" autocomplete="on">
+						<center>
+						<input id="input_avatar" type="file" multiple="false" style="padding:2px;margin-bottom:4px;border:1px solid maroon;" accept="image/*" required>
+						<br />
+						<span style="color:#fff;">Click and drag on your image to crop it, else it will not let you change it.</span>
+						</center>
+						<h3 style="margin-top:4px;padding:2px;margin-bottom:0px;background:#CA3C60;border:1px solid maroon;">Preview: </h3>
+						<canvas width="80px" height="80px" style="margin:4px;overflow:hidden;" id="preview_avatar"></canvas>
+						<br />
+						<input class="subinp" type="submit" value="Change Avatar" style="border:1px solid maroon;padding:2px 16px;font-size:14pt;color:maroon;">
+						<br />
+					</form>
+				</div>
+				<div id="change_nameColor" class="center chat_module">
+					<h2 style="cursor:move;margin-top:0px;padding:2px;margin-bottom:8px;background:#CA3C60;border:1px solid maroon;">Name Color<img class="exit_dialog" src="images/icons/exit_dialog.png" /></h2>
+					<input class="textinp" maxlength="6" size="6" placeholder="FFFFFF" id="sp-name" class="spectrum" type="text" style="padding:2px;margin-bottom:4px;border:1px solid maroon;" required>
+				</div>
+				<div id="change_textColor" class="center chat_module">
+					<h2 style="cursor:move;margin-top:0px;padding:2px;margin-bottom:8px;background:#CA3C60;border:1px solid maroon;">Text Color<img class="exit_dialog" src="images/icons/exit_dialog.png" /></h2>
+					<input class="textinp" maxlength="6" size="6" placeholder="FFFFFF" id="sp-text" class="spectrum" type="text" style="padding:2px;margin-bottom:4px;border:1px solid maroon;" required>
+				</div>
+				<div id="change_background" class="center chat_module">
+					<h2 style="cursor:move;margin-top:0px;padding:2px;margin-bottom:8px;background:#CA3C60;border:1px solid maroon;">Background<img class="exit_dialog" src="images/icons/exit_dialog.png" /></h2>
+					<form id="upload_and_cropBG" autocomplete="on">
+						<span style='color:#fff;'><b>Image Size: 300x175</b></span>
+						<br />
+						<input id="input_background" type="file" multiple="false" style="padding:2px;margin-bottom:4px;border:1px solid maroon;" accept="image/*">
+						<br />
+						<span style="color:#fff;"><b>Image Positioning:</b></span>
+						<select id="bg_position" style="padding:2px;margin-bottom:4px;border:1px solid maroon;">
+							<option value="left">Left</option>
+							<option value="center">Center</option>
+							<option value="right">Right</option>
+						</select>
+						<br />
+						<span style="color:#fff;"><b>Image Color:</b></span>
+						<br />
+						<input value="" maxlength="6" size="6" placeholder="FFFFFF" id="sp-background" class="spectrum" type="text" style="padding:2px;margin-bottom:4px;border:1px solid maroon;">
+						<br />
+						<span style='color:#fff;'><b>Note: you must at least choose one image or color, or both.</b></span>
+						<br />
+						<input class="subinp" id="submit_bg_form" type="submit" value="Change Background" style="margin-top:8px;border:1px solid maroon;padding:2px 16px;font-size:14pt;color:maroon;">
+						<br />
+					</form>
+				</div>
+				<div id="inventory" class="center chat_module">
+					<h2 style="cursor:move;margin-top:0px;padding:2px;margin-bottom:8px;background:#CA3C60;border:1px solid maroon;">Inventory<img class="exit_dialog" src="images/icons/exit_dialog.png" /></h2>
+					<span style="color:white;font-weight:bold;">What you currently have:</span>
+					<br />
+					<br />
+					<span id="inv_contents">
+						<span style="color:white;font-weight:bold;">~ EMBLEMS ~</span>
+						<br />
+						<br />
+						<span id="inv_emblems"></span>
+					</span>
+				</div>
+				<div id="friends_list" class="center chat_module">
+					<h2 style="cursor:move;margin-top:0px;padding:2px;margin-bottom:8px;background:#CA3C60;border:1px solid maroon;">Friends List<img class="exit_dialog" src="images/icons/exit_dialog.png" /></h2>
+					<form id="add_friends" autocomplete="off">
+						<span id="addFriend_err" style="color:red;background:maroon;display:none;width:100%;"></span>
+						<input id="input_friend" style="width:75px;padding:2px;margin-bottom:4px;border:1px solid maroon;" type="text">
+						<input class="subinp" id="submit_friends" type="submit" value="Add Friend" style="margin-top:8px;border:1px solid maroon;padding:2px 16px;font-size:14pt;color:maroon;">
+						<br />
+					</form>
+					<div id="friendslist">
+						<span id="friend_online"></span>
+						<span id="friend_offline"></span>
+					</div>
+				</div>
+				<div id="people_here" class="center chat_module">
+					<h2 style="cursor:move;margin-top:0px;padding:2px;margin-bottom:8px;background:#CA3C60;border:1px solid maroon;">People Here<img class="exit_dialog" src="images/icons/exit_dialog.png" /></h2>
+					<div id="people_list">
+						<span style="color:#fff;border-bottom:1px solid gold;" id="people_here_amount"><b>Total amount: 0</b></span>
+						<br />
+						<span style="color:#fff;" id="people_here_list"></span>
+					</div>
+				</div>
+				<div id="banlist" class="center chat_module">
+					<h2 style="cursor:move;margin-top:0px;padding:2px;margin-bottom:8px;background:#CA3C60;border:1px solid maroon;">Banlist<img class="exit_dialog" src="images/icons/exit_dialog.png" /></h2>
+					<div id="banned_users"></div>
+				</div>
+				<div id="chat_ranks" class="center chat_module">
+					<h2 style="cursor:move;margin-top:0px;padding:2px;margin-bottom:8px;background:#CA3C60;border:1px solid maroon;">Chat Mods<img class="exit_dialog" src="images/icons/exit_dialog.png" /></h2>
+					<form id="set_rank">
+						<span style="color:white;font-weight:bold;">Name:</span> <input id="changerank_name" style="width:75px;padding:2px;margin-bottom:4px;border:1px solid maroon;" type="text">
+						<span style="color:white;font-weight:bold;">Rank:</span> <input id="changerank_rank" style="width:30px;padding:2px;margin-bottom:4px;border:1px solid maroon;" type="number" min="0" max="5" value="1">
+						<span id="setRank_err" style="color:red;background:maroon;display:none;width:100%;"></span>
+						<br />
+						<input class="subinp" style="margin-top:8px;border:1px solid maroon;padding:2px 16px;font-size:14pt;color:maroon;" type="submit" value="Change rank">
+					</form>
+					<div id="mod_list"></div>
+				</div>
+				<div id="user_stats" class="center chat_module">
+					<h2 style="cursor:move;margin-top:0px;padding:2px;margin-bottom:8px;background:#CA3C60;border:1px solid maroon;">Statistics<img class="exit_dialog" src="images/icons/exit_dialog.png" /></h2>
+					<center>
+						<div id="stats_list" style="width:150px;">
+							<span style="color:#fff;float:left;margin-left:4px">Name :</span>
+							<span id="stats_username" style="color:#fff;float:right;margin-right:4px">undefined</span>
+							<br />
+							<span style="color:#fff;float:left;margin-left:4px">Rank :</span>
+							<span id="stats_rank" style="color:#fff;float:right;margin-right:4px">0</span>
+							<br />
+							<span style="color:#fff;float:left;margin-left:4px">JoltyPoints :</span>
+							<span id="stats_jp" style="color:#fff;float:right;margin-right:4px">0</span>
+						</div>
+					</center>
+				</div>
+				<div id="store_confirm" class="center chat_module">
+					<h2 style="cursor:move;margin-top:0px;padding:2px;margin-bottom:8px;background:#CA3C60;border:1px solid maroon;">Confirm Purchase<img class="exit_dialog" src="images/icons/exit_dialog.png" /></h2>
+					<form id="store_confirm_form">
+						<span style="color:white;"><b>You are attempting to purchase: <span style="color:orange;" id="store_confirm_name">null</span></b></span>
+						<br />
+						<br />
+						<span style="color:gold;"><b>Price: <span style="color:orange;" id="store_confirm_amount">0 JP</span></b></span>
+						<br />
+						<br />
+						<span id="storePurchase_err" style="color:red;background:maroon;display:none;width:100%;"></span>
+						<input class="subinp" style="margin-top:8px;border:1px solid maroon;padding:2px 16px;font-size:14pt;color:maroon;" type="submit" value="Confirm Purchase">
+					</form>
+				</div>
+				<div id="gamble_response" class="center chat_module">
+					<h2 style="cursor:move;margin-top:0px;padding:2px;margin-bottom:8px;background:#CA3C60;border:1px solid maroon;">Gamble Request<img class="exit_dialog" src="images/icons/exit_dialog.png" /></h2>
+					<center>
+						<div id="stats_list" style="width:150px;">
+						<span style="font-size:15pt;color:white;font-weight:bold;">Amount: <span id="gamblereq_amount" style="color:gold;">null</span></span>
+						<br />
+						<span style="font-size:15pt;color:white;font-weight:bold;">With: <span id="gamblereq_name" style="color:gold;">null</span></span>
+						<br />
+						<input id="gamble_accept" style="margin-top:8px;border:1px solid maroon;padding:2px 16px;font-size:14pt;color:maroon;" type="button" value="Accept"><input id="gamble_reject" style="margin-top:8px;border:1px solid maroon;padding:2px 16px;font-size:14pt;color:maroon;" type="button" value="Reject">
+					</center>
+				</div>
+				<div id="pms_template" class="center chat_module">
+					<h2 style="cursor:move;margin-top:0px;padding:2px;margin-bottom:8px;background:#CA3C60;border:1px solid maroon;">Private Message<img class="exit_dialog_pm" src="images/icons/exit_dialog.png" /></h2>
+					<span class="pms_name" style="color:white;font-size:20pt;"><img width="20px" height="20px" src="/user_images/replaceThis/avatar.jpg" /> replaceThis</span>
+					<div class="private_messageBox replaceThis-mBox"></div>
+					<textarea autocomplete="off" maxlength="1000" class="type_private replaceThis-type" style="resize:none;height:15px;width:calc(100% - 6px);padding:2px;margin-bottom:4px;margin-top:1px;border:1px solid maroon;"></textarea>
+				</div>
+				<div id="youtube_module" class="center chat_module">
+					<h2 style="cursor:move;margin-top:0px;padding:2px;margin-bottom:8px;background:#CA3C60;border:1px solid maroon;">Youtube Container<img class="exit_dialog" src="images/icons/exit_dialog.png" /></h2>
+					<div id="youtube_container"></div>
+				</div>
+			</div>
+		</div>
+
+		<script src="/jquery/jquery.min.js"></script>
+		<script src="/jquery/jquery-ui.min.js"></script>
+		<script src="/jquery/jquery.Jcrop.min.js"></script>
+		<script src="/spectrum/spectrum.js"></script>
+		<script src="/socket.io/socket.io.js"></script>
+		<script src="handling.js"></script>
+	</body>
+</html>
